@@ -1,0 +1,9 @@
+header {
+  text-align: center;
+  background-color: hsl(220, 13%, 18%);
+  min-height: 30px;
+  font-size: 1rem;
+  color: white;
+  padding: 5px;
+  margin: 0;
+}
