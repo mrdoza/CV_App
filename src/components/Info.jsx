@@ -7,7 +7,7 @@ function Info({ basicInfo, setBasicInfo }) {
   return (
     <>
       <h3>Info</h3>
-      <form onSubmit={submitForm}>
+      <form>
         <div>
           <label for="name">
             Your Name:
