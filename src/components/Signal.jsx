@@ -1,6 +1,6 @@
 import { signal } from "@preact/signals-react";
 
-const count = signal(0);
+const count = signal(0, 0);
 
 export default function Signal() {
   return (

@@ -1,43 +1,47 @@
-function Info({ basicInfo, setBasicInfo }) {
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setBasicInfo({ ...basicInfo, [name]: value });
+function Info() {
+  const submitForm = (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.target);
+    const data = Object.fromEntries(formData.entries());
+
+    console.log(data.name);
   };
 
   return (
     <>
       <h3>Info</h3>
-      <form>
+      <form onSubmit={submitForm}>
         <div>
-          <label for="name">
+          <label htmlFor="name">
             Your Name:
             <br />
           </label>
-          <input type="text" name="name" id="name" placeholder="Name" />
+          <input type="text" name="name" id="name" placeholder="Full Name" />
         </div>
         <div>
-          <label for="email">
+          <label htmlFor="email">
             Email:
             <br />
           </label>
           <input type="email" name="email" id="email" />
         </div>
         <div>
-          <label for="phone">
+          <label htmlFor="phone">
             Phone:
             <br />
           </label>
           <input type="tel" name="phone" id="phone" />
         </div>
         <div>
-          <label for="city">
+          <label htmlFor="city">
             City:
             <br />
           </label>
           <input type="text" name="city" id="city" />
         </div>
         <div>
-          <label for="state">
+          <label htmlFor="state">
             State:
             <br />
           </label>
@@ -45,7 +49,7 @@ function Info({ basicInfo, setBasicInfo }) {
           <input type="text" name="state" id="state" />
         </div>
         <div>
-          <label for="zip">
+          <label htmlFor="zip">
             Zip:
             <br />
           </label>
