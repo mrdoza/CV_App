@@ -1,4 +1,4 @@
-function Info() {
+function Info({ onSubmit }) {
   const submitForm = (e) => {
     e.preventDefault();
 
@@ -6,6 +6,7 @@ function Info() {
     const data = Object.fromEntries(formData.entries());
 
     console.log(data.name);
+    onSubmit(data);
   };
 
   return (
