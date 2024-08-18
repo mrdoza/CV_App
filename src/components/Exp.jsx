@@ -2,8 +2,8 @@ function Exp({ onSubmit }) {
   const submitForm = (e) => {
     e.preventDefault();
 
-    const formData = new FormData(e.target);
-    const data = Object.fromEntries(formData.entries());
+    const expData = new FormData(e.target);
+    const data = Object.fromEntries(expData.entries());
 
     console.log(data.name);
     onSubmit(data);
@@ -11,7 +11,7 @@ function Exp({ onSubmit }) {
 
   return (
     <>
-      <h3>Experience</h3>
+      <h3 className="underline">Experience</h3>
       <form onSubmit={submitForm}>
         <div>
           <label htmlFor="Company">
@@ -22,7 +22,7 @@ function Exp({ onSubmit }) {
             type="text"
             name="company"
             id="company"
-            placeholder="Full Name"
+            placeholder="Company Name"
           />
         </div>
         <div>

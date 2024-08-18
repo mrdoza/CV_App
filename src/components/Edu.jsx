@@ -1,45 +1,65 @@
-function Edu({ onSubmit }) {
+function Edu({ edu, onSubmit }) {
   const submitForm = (e) => {
     e.preventDefault();
 
-    const formData = new FormData(e.target);
-    const data = Object.fromEntries(formData.entries());
+    const eduData = new FormData(e.target);
+    const data = Object.fromEntries(eduData.entries());
 
-    console.log(data.name);
     onSubmit(data);
   };
 
   return (
     <>
-      <h3>Education</h3>
+      <h3 className="underline">Education</h3>
       <form onSubmit={submitForm}>
         <div>
           <label htmlFor="school">
             School:
             <br />
           </label>
-          <input type="text" name="school" id="school" placeholder="School" />
+          <input
+            type="text"
+            name="school"
+            id="school"
+            placeholder="School"
+            defaultValue={edu.school || ""}
+          />
         </div>
         <div>
           <label htmlFor="from">
             From:
             <br />
           </label>
-          <input type="date" name="from" id="from" />
+          <input
+            type="date"
+            name="from"
+            id="from"
+            defaultValue={edu.from || ""}
+          />
         </div>
         <div>
           <label htmlFor="to">
             To:
             <br />
           </label>
-          <input type="date" name="to" id="to" />
+          <input
+            type="date"
+            name="to"
+            id="to"
+            defaultValue={edu.to || ""}
+          />
         </div>
         <div>
           <label htmlFor="degree">
             Degree:
             <br />
           </label>
-          <input type="text" name="degree" id="degree" />
+          <input
+            type="text"
+            name="degree"
+            id="degree"
+            defaultValue={edu.degree || ""}
+          />
         </div>
 
         <button type="submit">Submit</button>

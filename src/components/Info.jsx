@@ -2,8 +2,8 @@ function Info({ onSubmit }) {
   const submitForm = (e) => {
     e.preventDefault();
 
-    const formData = new FormData(e.target);
-    const data = Object.fromEntries(formData.entries());
+    const infoData = new FormData(e.target);
+    const data = Object.fromEntries(infoData.entries());
 
     console.log(data.name);
     onSubmit(data);
@@ -11,7 +11,7 @@ function Info({ onSubmit }) {
 
   return (
     <>
-      <h3>Info</h3>
+      <h3 className="underline">Basic Info</h3>
       <form onSubmit={submitForm}>
         <div>
           <label htmlFor="name">
