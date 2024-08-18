@@ -4,7 +4,7 @@ function Body({ formData }) {
   return (
     <div>
       <div className="main-form">
-        <h1>Basic Info</h1>
+        <h1 className="text-3xl font-bold underline">Basic Info</h1>
         <p>Name: {formData.name}</p>
         <p>Email: {formData.email}</p>
         <p>Phone: {formData.phone}</p>
