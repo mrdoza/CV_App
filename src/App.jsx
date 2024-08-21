@@ -24,12 +24,18 @@ function App() {
   };
 
   const handleExpSubmit = (data) => {
-    setExpData(data);
-    localStorage.setItem("expData", JSON.stringify(data));
+    const newExpData = [...expData];
+    newExpData[index] = data;
+    setExpData(newExpData);
+    localStorage.setItem("expData", JSON.stringify(newExpData));
   };
 
   const addEduForm = () => {
     setEduData([...eduData, {}]);
+  };
+
+  const addExpForm = () => {
+    setExpData([...expData, {}]);
   };
 
   useEffect(() => {
@@ -38,12 +44,13 @@ function App() {
     const savedExpData = localStorage.getItem("expData");
 
     if (savedInfoData) setInfoData(JSON.parse(savedInfoData));
-    if (savedEduData) setEduData(JSON.parse(savedEduData) || []);
-    else setEduData([]);
-    if (savedExpData) setExpData(JSON.parse(savedExpData));
-  }, []);
 
-  const combinedData = { ...infoData, eduData, ...expData };
+    if (savedEduData) setEduData(JSON.parse(savedEduData) || []);
+
+    if (savedExpData) setExpData(JSON.parse(savedExpData) || []);
+  });
+
+  const combinedData = { ...infoData, eduData, expData };
 
   return (
     <>
@@ -52,7 +59,7 @@ function App() {
       <div className="content">
         <div className="inputs">
           <Info onSubmit={handleInfoSubmit} />
-          {console.log(eduData)}
+
           {eduData.map((edu, index) => (
             <Edu
               key={index}
@@ -63,7 +70,17 @@ function App() {
           <button type="button" onClick={addEduForm}>
             Add Education
           </button>
-          <Exp onSubmit={handleExpSubmit} />
+
+          {expData.map((exp, index) => (
+            <Exp
+              key={index}
+              exp={exp}
+              onSubmit={(data) => handleExpSubmit(data, index)}
+            />
+          ))}
+          <button type="button" onClick={addExpForm}>
+            Add Experience
+          </button>
         </div>
         <div className="main-form">
           <Body formData={combinedData} />

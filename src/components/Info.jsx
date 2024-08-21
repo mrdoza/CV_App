@@ -5,7 +5,6 @@ function Info({ onSubmit }) {
     const infoData = new FormData(e.target);
     const data = Object.fromEntries(infoData.entries());
 
-    console.log(data.name);
     onSubmit(data);
   };
 

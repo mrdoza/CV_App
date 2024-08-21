@@ -16,7 +16,7 @@ function Body({ formData }) {
       </div>
       {Array.isArray(formData.eduData) &&
         formData.eduData.map((edu, index) => (
-          <div key={index}>
+          <div key={index} className="main-form">
             <h4>Education {index + 1}</h4>
             <p>School: {edu.school}</p>
             <p>From: {edu.from}</p>
@@ -24,15 +24,21 @@ function Body({ formData }) {
             <p>Degree: {edu.degree}</p>
           </div>
         ))}
-      <div className="main-form">
-        <h1 className="text-3xl font-bold underline">Experience</h1>
-        <p>Company: {formData.company}</p>
-        <p>City: {formData.location}</p>
-        <p>Start Date: {formData.start}</p>
-        <p>End Date: {formData.end}</p>
-        <p>Position: {formData.position}</p>
-        <p>Resposibilities: {formData.tasks}</p>
-      </div>
+
+      {Array.isArray(formData.expData) &&
+        formData.expData.map((exp, index) => (
+          <div key={index} className="main-form">
+            <h4 className="text-3xl font-bold underline">
+              Experience {index + 1}
+            </h4>
+            <p>Company: {exp.company}</p>
+            <p>City: {exp.location}</p>
+            <p>Start Date: {exp.start}</p>
+            <p>End Date: {exp.end}</p>
+            <p>Position: {exp.position}</p>
+            <p>Resposibilities: {exp.tasks}</p>
+          </div>
+        ))}
     </div>
   );
 }

@@ -42,12 +42,7 @@ function Edu({ edu, onSubmit }) {
             To:
             <br />
           </label>
-          <input
-            type="date"
-            name="to"
-            id="to"
-            defaultValue={edu.to || ""}
-          />
+          <input type="date" name="to" id="to" defaultValue={edu.to || ""} />
         </div>
         <div>
           <label htmlFor="degree">
