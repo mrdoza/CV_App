@@ -23,7 +23,7 @@ function App() {
     localStorage.setItem("eduData", JSON.stringify(newEduData));
   };
 
-  const handleExpSubmit = (data) => {
+  const handleExpSubmit = (data, index) => {
     const newExpData = [...expData];
     newExpData[index] = data;
     setExpData(newExpData);
@@ -46,9 +46,11 @@ function App() {
     if (savedInfoData) setInfoData(JSON.parse(savedInfoData));
 
     if (savedEduData) setEduData(JSON.parse(savedEduData) || []);
+    else setEduData([{}]);
 
     if (savedExpData) setExpData(JSON.parse(savedExpData) || []);
-  });
+    else setExpData([{}]);
+  }, []);
 
   const combinedData = { ...infoData, eduData, expData };
 
