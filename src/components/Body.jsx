@@ -1,44 +1,75 @@
-import Info from "./Info";
-import Edu from "./Edu";
-import Exp from "./Exp";
+
+
+      // Suggested code may be subject to a license. Learn more: ~LicenseLog:2371035890.
+// Suggested code may be subject to a license. Learn more: ~LicenseLog:1234999138.
+// Suggested code may be subject to a license. Learn more: ~LicenseLog:1297963795.
+import React from 'react';
 
 function Body({ formData }) {
-  return (
-    <div>
-      <div className="main-form">
-        <h1 className="text-3xl font-bold underline">Basic Info</h1>
-        <p>Name: {formData.name}</p>
-        <p>Email: {formData.email}</p>
-        <p>Phone: {formData.phone}</p>
-        <p>City: {formData.city}</p>
-        <p>State: {formData.state}</p>
-        <p>Zip: {formData.zip}</p>
-      </div>
-      {Array.isArray(formData.eduData) &&
-        formData.eduData.map((edu, index) => (
-          <div key={index} className="main-form">
-            <h4>Education {index + 1}</h4>
-            <p>School: {edu.school}</p>
-            <p>From: {edu.from}</p>
-            <p>To: {edu.to}</p>
-            <p>Degree: {edu.degree}</p>
-          </div>
-        ))}
+  const renderEducation = () => {
+    if (!Array.isArray(formData.eduData) || formData.eduData.length === 0) {
+      return null; 
+    }
 
-      {Array.isArray(formData.expData) &&
-        formData.expData.map((exp, index) => (
-          <div key={index} className="main-form">
-            <h4 className="text-3xl font-bold underline">
-              Experience {index + 1}
-            </h4>
-            <p>Company: {exp.company}</p>
-            <p>City: {exp.location}</p>
-            <p>Start Date: {exp.start}</p>
-            <p>End Date: {exp.end}</p>
-            <p>Position: {exp.position}</p>
-            <p>Resposibilities: {exp.tasks}</p>
+    return (
+      <div>
+        <h2 className="text-center underline text-2xl font-bold mt-8">Education</h2>
+        {formData.eduData.map((edu, index) => (
+          <div key={index} className="mb-4 border-b pb-2">
+            <h3 className="text-xl font-semibold">{edu.school}</h3>
+            <p className="text-gray-600 text-sm">
+              {edu.from} - {edu.to}
+            </p>
+            <p>{edu.degree}</p>
           </div>
         ))}
+      </div>
+    );
+  };
+
+  const renderExperience = () => {
+    if (!Array.isArray
+(formData.expData) || formData.expData.length === 0) {
+      return null;
+    }
+
+    return (
+      <div>
+        <h2 className="text-center underline text-2xl font-bold mt-8">Experience</h2>
+        {formData.expData.map((exp, index) => (
+          <div key={index} className="mb-4 border-b pb-2">
+            <h3 className="text-xl font-semibold">{exp.company}</h3>
+            <p className="text-gray-600 text-sm">
+              {exp.position} | {exp.location} | {exp.start} - {exp.end}
+            </p>
+            <p>Responsibilities: {exp.tasks}</p> 
+          </div>
+        ))}
+      </div>
+    );
+  };
+
+  return (
+    <div className="container mx-auto p-8"> 
+      <div className="text-center bg-grey shadow-md rounded-lg p-6">
+        <h1 className=" underline text-3xl font-bold mb-4">Stats</h1>
+        <p>
+
+           {formData.name}
+        </p>
+        <p>
+           {formData.email}
+        </p>
+        <p>
+           {formData.phone}
+        </p>
+        <p>
+           {formData.city}, {formData.state}
+        </p>        
+              </div>
+
+      {renderEducation()}
+      {renderExperience()}
     </div>
   );
 }
